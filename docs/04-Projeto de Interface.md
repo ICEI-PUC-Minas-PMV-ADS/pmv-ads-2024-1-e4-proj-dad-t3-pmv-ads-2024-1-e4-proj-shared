@@ -1,36 +1,28 @@
 
 # Projeto de Interface
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
-
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes). Nesta seção serão apresentados as principais interfaces da plataforma. 
 
 ## Diagrama de Fluxo
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+O diagrama de fluxo apresentado abaixo ilustra a interação entre os usuários, os condomínios e o sistema de reservas de espaços. O sistema permite que os usuários criem contas, façam login e realizem reservas em espaços dentro dos condomínios. Os condomínios, por sua vez, podem aprovar ou cancelar as reservas feitas pelos usuários. A API é responsável por autenticar os usuários e gerenciar as reservas. O frontend web e mobile fornecem interfaces para os usuários e condomínios interagirem com o sistema. O diagrama de fluxo ajuda a planejar e a entender a lógica de interação entre os usuários, os condomínios e o sistema, garantindo uma experiência de usuário mais intuitiva e eficiente.
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
-
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
-
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+![Diagrama de Fluxo da aplicação](img/shared_diagrama_fluxo.png)
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+Os wireframes são protótipos utilizados em design de interface para sugerir a estrutura de um site web e seus relacionamentos entre suas páginas. Eles permitem uma visão geral da estrutura e do layout da aplicação, ajudando a identificar problemas de usabilidade e fluxo de navegação antes de investir em desenvolvimento.
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+A seguir, apresentamos os wireframes da nossa aplicação para reserva de espaços em condomínios, tanto para a versão web quanto para a versão mobile. Esses protótipos visam demonstrar a estrutura e o layout das diferentes páginas da aplicação, além de ilustrar a navegação e a interação entre as telas.
+
+### Web Client
+
+### Mobile Client
+
+<img src="img/screen1.png" width="15%" alt="Splash">
+<img src="img/screen2.png" width="15%" alt="Login">
+<img src="img/screen3.png" width="15%" alt="Main">
+
+<img src="img/screen4.png" width="15%" alt="Lista de Reservas">
+<img src="img/screen5.png" width="15%" alt="Form de Reserva">
+

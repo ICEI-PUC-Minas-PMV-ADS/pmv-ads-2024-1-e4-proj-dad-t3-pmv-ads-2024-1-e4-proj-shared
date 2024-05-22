@@ -1,54 +1,82 @@
 # Especificações do Projeto
 
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
-
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
-
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
-
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+> - `Carla Dias`
+ - Moradora
+ - Idade: 35 anos
+ - Profissão: Advogada
+ - Situação: Mãe de dois filhos pequenos
+ - Necessidades: Procura agendar festas de aniversário e eventos familiares nos espaços comuns do condomínio de forma rápida e eficiente. Valoriza a segurança e a comodidade para seus filhos.
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+> - `João Neves`
+ - Síndico
+ - Idade: 50 anos
+ - Profissão: Empresário
+ - Situação: Síndico do condomínio há 5 anos
+ - Necessidades: Precisa de uma ferramenta que simplifique o processo de gerenciamento de reservas e garanta a organização dos espaços comuns. Valoriza a facilidade de uso e a redução de conflitos entre os moradores.
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+`Maria Santos`
+ - Idosa
+ - Idade: 70 anos
+ - Profissão: Aposentada
+ - Situação: Vive sozinha no condomínio
+ - Necessidades: Deseja reservar os espaços comuns para atividades recreativas e encontros sociais com outros moradores. Valoriza uma interface intuitiva e suporte acessível para tirar dúvidas durante o processo de reserva.
+
+> - `Lucas Torres`
+ - Estudante
+ - Idade: 22 anos
+ - Profissão: Estudante universitário
+ - Situação: Morador temporário durante o período letivo
+ - Necessidades: Busca espaços tranquilos para estudar e realizar reuniões de grupo. Valoriza a flexibilidade de horários e a facilidade de acesso às informações sobre disponibilidade dos espaços.
+
+> - `Fernanda Silva`
+- Profissional
+- Idade: 40 anos
+- Profissão: Executiva
+- Situação: Viaja com frequência a trabalho
+- Necessidades: Precisa reservar espaços para reuniões corporativas e eventos de networking quando está em casa. Valoriza a praticidade de agendamento e a integração com seu calendário profissional.
 
 ## Histórias de Usuários
 
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
+Com base na análise das personas, foram identificadas as seguintes histórias de usuários:
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|EU COMO...               | QUERO/PRECISO ...                                      |PARA ...                                           |
+|-------------------------|--------------------------------------------------------|---------------------------------------------------|
+|Carla Dias              | Visualizar a disponibilidade dos espaços comuns do condomínio | Poder agendar eventos e atividades de acordo com a minha conveniência |
+|Carla Dias              | Reservar um espaço comum para um evento específico   | Garantir que o espaço esteja disponível para mim na data desejada |
+|Carla Dias              | Receber notificações sobre a confirmação da minha reserva | Ter certeza de que minha reserva foi registrada com sucesso |
+|João Neves              | Aprovar ou rejeitar reservas feitas pelos moradores | Garantir que as reservas estejam de acordo com as políticas do condomínio |
+|João Neves              | Adicionar novos moradores ao sistema               | Garantir que todos os residentes tenham acesso à plataforma de reserva |
+|João Neves              | Remover moradores do sistema                        | Manter a lista de usuários atualizada e segura |
+|João Neves              | Modificar as permissões de acesso dos moradores     | Controlar quem pode fazer reservas e quem pode apenas visualizar a disponibilidade dos espaços |
+|Maria Santos            | Visualizar a disponibilidade dos espaços comuns do condomínio | Poder agendar eventos e atividades de acordo com a minha conveniência |
+|Maria Santos            | Reservar um espaço comum para um evento específico   | Garantir que o espaço esteja disponível para mim na data desejada |
+|Maria Santos            | Receber notificações sobre a confirmação da minha reserva | Ter certeza de que minha reserva foi registrada com sucesso |
+|Lucas Torres            | Visualizar a disponibilidade dos espaços comuns do condomínio | Poder agendar eventos e atividades de acordo com a minha conveniência |
+|Lucas Torres            | Reservar um espaço comum para um evento específico   | Garantir que o espaço esteja disponível para mim na data desejada |
+|Lucas Torres            | Receber notificações sobre a confirmação da minha reserva | Ter certeza de que minha reserva foi registrada com sucesso |
+|Fernanda Silva          | Visualizar a disponibilidade dos espaços comuns do condomínio | Poder agendar eventos e atividades de acordo com a minha conveniência |
+|Fernanda Silva          | Reservar um espaço comum para um evento específico   | Garantir que o espaço esteja disponível para mim na data desejada |
+|Fernanda Silva          | Receber notificações sobre a confirmação da minha reserva | Ter certeza de que minha reserva foi registrada com sucesso |
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
+Essas histórias de usuários serão fundamentais para orientar o desenvolvimento do sistema, garantindo que as necessidades e expectativas dos diferentes tipos de usuários sejam atendidas de maneira eficaz.
 
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
 
 ## Modelagem do Processo de Negócio 
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+Gestão Manual dos Espaços Comuns: Atualmente, a gestão dos espaços comuns do condomínio é feita de forma manual, geralmente por meio de agendas físicas ou planilhas compartilhadas. Isso pode levar a conflitos de agendamento, erros humanos e dificuldade na visualização da disponibilidade dos espaços.
+
+Comunicação Ineficiente: A comunicação entre os moradores e a administração do condomínio em relação às reservas de espaços comuns é muitas vezes ineficiente. Os moradores podem enfrentar dificuldades para solicitar reservas, receber confirmações ou atualizações sobre suas reservas.
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+Automatização do Processo de Reservas: Implementação de um sistema online que permite aos moradores visualizarem a disponibilidade dos espaços comuns, fazerem reservas de forma autônoma e receberem confirmações automáticas.
+
+Melhoria na Comunicação: Introdução de notificações automáticas para os moradores sobre o status de suas reservas, além de facilitar o contato com a administração do condomínio por meio de uma plataforma centralizada.
+
 
 ### Processo 1 – NOME DO PROCESSO
 
@@ -64,12 +92,14 @@ Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em segu
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
+| Indicador                           | Objetivos                                      | Descrição                                                    | Fonte dos Dados          | Perspectiva    |
+|-------------------------------------|------------------------------------------------|--------------------------------------------------------------|--------------------------|----------------|
+| Taxa de Ocupação dos Espaços Comuns | Aumentar a utilização dos espaços comuns      | Porcentagem de tempo em que os espaços estão ocupados       | Sistema de Reservas      | Eficiência     |
+| Tempo Médio de Resposta             | Melhorar a eficiência na gestão de reservas   | Tempo médio necessário para responder às solicitações       | Sistema de Reservas      | Eficiência     |
+| Taxa de Reservas Canceladas         | Reduzir o número de reservas canceladas       | Porcentagem de reservas que são canceladas em relação ao total de reservas feitas | Sistema de Reservas      | Eficiência     |
+| Nível de Satisfação dos Moradores   | Aumentar a satisfação dos moradores           | Avaliação dos moradores sobre a facilidade de uso e eficácia do sistema de reservas | Pesquisas de Satisfação | Satisfação     |
+| Taxa de Utilização do Sistema       | Monitorar a adoção do sistema pelos moradores| Porcentagem de moradores que utilizam o sistema de reservas  | Sistema de Reservas      | Adoção         |
 
-Usar o seguinte modelo: 
-
-![Indicadores de Desempenho](img/02-indic-desemp.png)
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
 
 ## Requisitos
 
@@ -77,47 +107,33 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|ID    | Descrição do Requisito                                                  | Prioridade |
+|------|--------------------------------------------------------------------------|------------|
+|RF-001| Permitir que o morador visualize a disponibilidade dos espaços comuns do condomínio | ALTA       |
+|RF-002| Permitir que o morador reserve um espaço comum para um evento específico | ALTA       |
+|RF-003| Enviar notificações para o morador sobre a confirmação da sua reserva    | MÉDIA      |
+|RF-004| Permitir que o administrador do condomínio aprove ou rejeite as reservas feitas pelos moradores | ALTA       |
+|RF-005| Permitir que o administrador do condomínio adicione novos moradores ao sistema | ALTA       |
+|RF-006| Permitir que o administrador do condomínio remova moradores do sistema  | ALTA       |
+|RF-007| Permitir que o administrador do condomínio modifique as permissões de acesso dos moradores | MÉDIA      |
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+|ID     | Descrição do Requisito                                                  |Prioridade |
+|-------|--------------------------------------------------------------------------|------------|
+|RNF-001| O sistema deve ser responsivo para rodar em dispositivos móveis          | ALTA       |
+|RNF-002| O sistema deve ser capaz de processar requisições do usuário em no máximo 3 segundos | ALTA       |
 
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
 
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|ID| Restrição                                                      |
+|--|----------------------------------------------------------------|
+|01| O sistema deve ser desenvolvido utilizando a linguagem Python   |
+|02| O sistema deve ser implantado em um ambiente de nuvem pública   |
+|03| O sistema deve cumprir os regulamentos de proteção de dados GDPR |
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
 
@@ -162,12 +178,25 @@ O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utiliz
 
 ## Gerenciamento de Equipe
 
-O gerenciamento adequado de tarefas contribuirá para que o projeto alcance altos níveis de produtividade. Por isso, é fundamental que ocorra a gestão de tarefas e de pessoas, de modo que os times envolvidos no projeto possam ser facilmente gerenciados. 
-
-![Simple Project Timeline](img/02-project-timeline.png)
+O gerenciamento da equipe será realizado através da ferramenta de Gestão do  Projetos do Trello, onde após alinhado com os membros, serão registradas as tarefas a serem realizadas ao longo de cada sprint e para qual membro ela foi designada.
 
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
+### Orçamento
 
-![Orçamento](img/02-orcamento.png)
+| Recursos                 | Valor Estimado (em R$) |
+|--------------------------|------------------------|
+| Licenças de Software     | R$ 2.500               |
+| Infraestrutura de Rede   | R$ 5.000               |
+| Serviços de Hospedagem   | R$ 2.500               |
+| Desenvolvedores          | R$ 25.000              |
+| Testes de Qualidade      | R$ 7.500               |
+| Suporte Técnico          | R$ 5.000               |
+| Marketing e Publicidade  | R$ 7.500               |
+| UX/UI                    | R$ 10.000              |
+| Gestão de Pessoal/Tarefas| R$ 5.000               |
+| Contingências            | R$ 5.000               |
+| **Total**                | **R$ 70.000**          |
+
+**Nota:** Os valores apresentados são estimativas e podem variar conforme a inclusão de novas funcionalidades, alterações nos requisitos do projeto ou condições do mercado.
+
