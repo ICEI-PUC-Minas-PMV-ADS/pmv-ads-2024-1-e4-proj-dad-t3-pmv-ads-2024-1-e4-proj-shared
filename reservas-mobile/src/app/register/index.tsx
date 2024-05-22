@@ -34,7 +34,7 @@ export default function RegistrationScreen() {
         }}
       >
         <Image
-          source={require("../../assets/images/logo2.png")}
+          source={require("../../../assets/images/logo2.png")}
           style={{
             width: 70,
             height: 70,
