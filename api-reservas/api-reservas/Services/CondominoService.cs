@@ -6,7 +6,6 @@ namespace api_reservas.Services
 {
     public class CondominoService : BaseService<Condomino>
     {
-        private readonly IMongoCollection<Condomino> _collection;
         public CondominoService(MyMongoRepository repository) : base(repository)
         {
         }
