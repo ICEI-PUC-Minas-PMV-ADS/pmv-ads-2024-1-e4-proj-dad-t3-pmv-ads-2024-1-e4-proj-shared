@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between", // added to make the cards take up equal height
   },
   card: {
-    flex: 1, // added to make the cards take up equal height
+    flex: 1,
+    height: 30, // added to make the cards take up equal height
     marginBottom: 20,
     padding: 10,
     borderRadius: 5,

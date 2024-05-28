@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -17,6 +17,47 @@ export default function RegistrationScreen() {
   const [email, setEmail] = useState("");
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [password, setPassword] = useState("");
+  const [cpf, setCPF] = useState("");
+  const [cnpj, setCNPJ] = useState("");
+
+  const handleCPFChange = (text: React.SetStateAction<string>) => {
+    setCPF(text);
+  };
+
+  const handleCNJPChange = (text: React.SetStateAction<string>) => {
+    setCNPJ(text);
+  };
+
+  const handleRegistration = async () => {
+    try {
+      const data = {
+        nome: name,
+        email: email,
+        cnpj: cnpj,
+        cpf: cpf,
+        isCondominio: selectedTab === "one",
+        password: password,
+      };
+
+      const response = await fetch(
+        "https://localhost:44346/api/auth/registro",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
+      const token = await response.json();
+      if (token) {
+        // await registerUser(token);
+        // Navigate after registering. You may want to tweak this to ensure registration is
+        // successful before navigating.
+        router.replace("/form-reserva");
+      }
+    } catch (error) {
+      // Handle the error
+    }
+  };
 
   return (
     <ImageBackground
@@ -84,13 +125,23 @@ export default function RegistrationScreen() {
                   : "https://img.icons8.com/ios-filled/512/doc.png",
             }}
           />
-          <TextInput
-            style={styles.inputs}
-            placeholder={selectedTab === "one" ? "CPF" : "CNPJ"}
-            underlineColorAndroid="transparent"
-            value={cpfCnpj}
-            onChangeText={(text) => setCpfCnpj(text)}
-          />
+          {selectedTab === "one" ? (
+            <TextInput
+              style={styles.inputs}
+              placeholder="CPF"
+              underlineColorAndroid="transparent"
+              value={cpf}
+              onChangeText={handleCPFChange}
+            />
+          ) : (
+            <TextInput
+              style={styles.inputs}
+              placeholder="CNPJ"
+              underlineColorAndroid="transparent"
+              value={cnpj}
+              onChangeText={handleCNJPChange}
+            />
+          )}
         </View>
         <View style={styles.inputContainer}>
           <Image

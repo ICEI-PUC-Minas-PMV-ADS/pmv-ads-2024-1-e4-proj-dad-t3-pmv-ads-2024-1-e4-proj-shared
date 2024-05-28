@@ -19,6 +19,26 @@ export default function LoginScreen() {
   const { signIn } = useSession();
   // showAlert = (viewId) => Alert.alert("Alert", "Button pressed " + viewId);
 
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("https://your-api-url.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const token = await response.json();
+      if (token) {
+        await signIn(token);
+        // Navigate after signing in. You may want to tweak this to ensure sign-in is
+        // successful before navigating.
+        // router.replace("/home");
+      }
+    } catch (error) {
+      // Handle the error
+    }
+  };
   return (
     <ImageBackground
       source={{
