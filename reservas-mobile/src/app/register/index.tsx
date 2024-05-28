@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -146,6 +147,11 @@ export default function RegistrationScreen() {
           <Text style={styles.registerText}>Criar nova conta</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <Link href="/login" style={styles.text}>
+          Ja possui uma conta? Entre agora.
+        </Link>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -232,5 +238,8 @@ const styles = StyleSheet.create({
   registerText: {
     color: "white",
     fontWeight: "bold",
+  },
+  text: {
+    color: "white",
   },
 });

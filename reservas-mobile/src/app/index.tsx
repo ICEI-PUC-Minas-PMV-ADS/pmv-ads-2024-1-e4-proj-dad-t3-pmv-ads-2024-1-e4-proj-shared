@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -10,11 +11,12 @@ import {
   Image,
   Alert,
 } from "react-native";
+import { useSession } from "../context/ctx";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const { signIn } = useSession();
   // showAlert = (viewId) => Alert.alert("Alert", "Button pressed " + viewId);
 
   return (
@@ -79,7 +81,17 @@ export default function LoginScreen() {
         style={[styles.buttonContainer, styles.loginButton]}
         // onPress={() => showAlert("login")}
       >
-        <Text style={styles.loginText}>Entrar</Text>
+        <Text
+          onPress={() => {
+            signIn();
+            // Navigate after signing in. You may want to tweak this to ensure sign-in is
+            // successful before navigating.
+            router.replace("/home");
+          }}
+          style={styles.loginText}
+        >
+          Entrar
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
