@@ -1,4 +1,4 @@
-﻿using api_reservas.Models;
+﻿using api_reservas.Models.Config;
 using api_reservas.Repositories;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;

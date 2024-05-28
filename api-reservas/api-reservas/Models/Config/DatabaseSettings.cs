@@ -1,4 +1,4 @@
-﻿namespace api_reservas.Models
+﻿namespace api_reservas.Models.Config
 {
     public class DatabaseSettings
     {

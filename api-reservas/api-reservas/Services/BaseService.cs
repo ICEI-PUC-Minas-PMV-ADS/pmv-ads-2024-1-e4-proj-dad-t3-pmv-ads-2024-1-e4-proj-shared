@@ -1,4 +1,5 @@
-﻿using api_reservas.Models.Interfaces;
+﻿using api_reservas.Models;
+using api_reservas.Models.Interfaces;
 using api_reservas.Repositories;
 using MongoDB.Driver;
 
@@ -11,7 +12,8 @@ namespace api_reservas.Services
     public class BaseService<T> where T : class, IBaseEntity, new()
     {
 
-        private readonly IMongoCollection<T> _collection;
+
+        public readonly IMongoCollection<T> _collection;
 
         /// <summary>
         /// Initializes a new instance of the BaseService class with the specified MyMongoRepository.
@@ -21,6 +23,11 @@ namespace api_reservas.Services
         {
             string className = typeof(T).Name;
             _collection = myRepository.mongoDatabase.GetCollection<T>(className);
+        }
+
+        public BaseService()
+        {
+
         }
 
         /// <summary>
@@ -34,7 +41,7 @@ namespace api_reservas.Services
         /// Retrieves a single entity by its ID from the database.
         /// </summary>
         /// <param name="id">The ID of the entity to retrieve.</param>
-        /// <returns>A task that represents the asynchronous operation, returning the entity with the specified ID, or null if not found.</returns>
+        /// <returns>A task that represents the asynchrono   operation, returning the entity with the specified ID, or null if not found.</returns>
         public async Task<T?> GetAsync(string id) =>
             await _collection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
@@ -61,5 +68,6 @@ namespace api_reservas.Services
         /// <param name="id">The ID of the entity to delete.</param>
         /// <returns>A task that represents the asynchronous operation.</returns>
         public async Task RemoveAsync(string id) => await _collection.DeleteOneAsync(x => x.Id == id);
+
     }
 }

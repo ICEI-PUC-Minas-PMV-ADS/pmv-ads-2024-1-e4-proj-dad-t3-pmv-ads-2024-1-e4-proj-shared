@@ -29,6 +29,7 @@ export default function RegistrationScreen() {
   };
 
   const handleRegistration = async () => {
+    console.log("entrei")
     try {
       const data = {
         nome: name,
@@ -194,6 +195,7 @@ export default function RegistrationScreen() {
         </View>
         <TouchableOpacity
           style={[styles.buttonContainer, styles.registerButton]}
+          onPress={() => handleRegistration()}
         >
           <Text style={styles.registerText}>Criar nova conta</Text>
         </TouchableOpacity>

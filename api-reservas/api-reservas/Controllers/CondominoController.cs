@@ -1,40 +1,72 @@
 ﻿using api_reservas.Models;
-using api_reservas.Repositories;
 using api_reservas.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace api_reservas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CondominoController : BaseController<Condomino>
+    public class CondominoController : ControllerBase
     {
-        private static int ultimoUsuarioId = 0;
+        private readonly CondominoService _condominoService;
+        public CondominoController(CondominoService condominoService) => _condominoService = condominoService;
 
-        public CondominoController(MyMongoRepository repo) : base(repo)
-        {
+        [HttpGet]
+        public async Task<List<Condomino>> Get() => await _condominoService.GetAsync();
 
-        }
-        private int ProximoUsuarioId()
+        [HttpGet("{id:length(24)}")]
+        public async Task<ActionResult<Condomino>> Get(string id)
         {
-            return ++ultimoUsuarioId;
-        }
-        private Condomino CriarNovoCondomino(string nome)
-        {
-            return new Condomino
+            var book = await _condominoService.GetAsync(id);
+
+            if (book is null)
             {
-                usuarioId = ProximoUsuarioId(),
-                Nome = nome
-            };
+                return NotFound();
+            }
+
+            return book;
         }
+
         [HttpPost]
-        public override async Task<IActionResult> Post(Condomino entity)
+        public async Task<IActionResult> Post(Condomino condomino)
         {
-            var novoCondomino = CriarNovoCondomino(entity.Nome);
-            await _baseService.CreateAsync(novoCondomino);
+            await _condominoService.CreateAsync(condomino);
 
             return NoContent();
         }
+
+        [HttpPut("{id:length(24)}")]
+        public async Task<IActionResult> Update(string id, Condomino updatedCondomino)
+        {
+            var book = await _condominoService.GetAsync(id);
+
+            if (book is null)
+            {
+                return NotFound();
+            }
+
+            updatedCondomino.Id = book.Id;
+
+            await _condominoService.UpdateAsync(id, updatedCondomino);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var condomino = await _condominoService.GetAsync(id);
+
+            if (condomino is null)
+            {
+                return NotFound();
+            }
+
+            await _condominoService.RemoveAsync(id);
+
+            return NoContent();
+        }
+
     }
 }

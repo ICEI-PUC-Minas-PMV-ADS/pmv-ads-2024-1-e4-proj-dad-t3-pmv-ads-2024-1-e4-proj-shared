@@ -2,12 +2,12 @@
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace api_reservas.Models
+namespace api_reservas.Models.BaseModels
 {
     public class BaseEntity : IBaseEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string Id { get; set; }
     }
 }
