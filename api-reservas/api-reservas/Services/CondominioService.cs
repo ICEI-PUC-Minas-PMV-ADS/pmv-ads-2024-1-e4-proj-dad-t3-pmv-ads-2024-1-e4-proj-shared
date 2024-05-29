@@ -6,7 +6,6 @@ namespace api_reservas.Services
 {
     public class CondominioService(MyMongoRepository repository) : BaseService<Condominio>(repository)
     {
-        private readonly IMongoCollection<Condominio> _collection;
 
         public async Task<Condominio> FindByEmail(string email)
         {

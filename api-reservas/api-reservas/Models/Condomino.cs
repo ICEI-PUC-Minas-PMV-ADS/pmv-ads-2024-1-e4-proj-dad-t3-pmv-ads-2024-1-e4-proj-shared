@@ -10,7 +10,7 @@ namespace api_reservas.Models
         public Condomino()
         {
         }
-        public Condomino(RegisterDTO entity)
+        public Condomino(CreateUserDTO entity)
         {
             Name = entity.Nome;
             Email = entity.Email;

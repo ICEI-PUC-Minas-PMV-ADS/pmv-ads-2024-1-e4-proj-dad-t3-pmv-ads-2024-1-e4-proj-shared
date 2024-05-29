@@ -7,12 +7,13 @@ namespace api_reservas.Models
     public class Condominio : BaseUser
     {
         public Condominio() { }
-        public Condominio(RegisterDTO entity)
+        public Condominio(CreateUserDTO entity)
         {
             Name = entity.Nome;
             Email = entity.Email;
             CNPJ = entity.Cnpj;
             Password = entity.Password;
+            PasswordSalt = entity.PasswordSalt;
         }
 
         [Required(ErrorMessage = "O Nome do Condominio é obrigatório")]
