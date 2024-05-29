@@ -9,7 +9,7 @@
 				<h2 class="text-2xl leading-tight md:pr-0 text-white">{title}</h2>
 				<div class="text-end">
 					<form class="flex w-full space-x-3">
-						<div class=" relative ">
+						<div class=" relative">
 							<input
 								type="text"
 								id="form-subscribe-Filter"
@@ -33,31 +33,31 @@
 							<tr>
 								<th
 									scope="col"
-									class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+									class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
 								>
 									User
 								</th>
 								<th
 									scope="col"
-									class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+									class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
 								>
 									Role
 								</th>
 								<th
 									scope="col"
-									class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+									class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
 								>
 									Created at
 								</th>
 								<th
 									scope="col"
-									class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+									class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
 								>
 									status
 								</th>
 								<th
 									scope="col"
-									class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+									class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
 								/>
 							</tr>
 						</thead>
@@ -70,7 +70,7 @@
 												<img
 													alt="profil"
 													src="/images/2.jpg"
-													class="mx-auto object-cover rounded-full h-10 w-10 "
+													class="mx-auto object-cover rounded-full h-10 w-10"
 												/>
 											</span>
 										</div>
@@ -108,7 +108,7 @@
 												<img
 													alt="profil"
 													src="/images/3.jpg"
-													class="mx-auto object-cover rounded-full h-10 w-10 "
+													class="mx-auto object-cover rounded-full h-10 w-10"
 												/>
 											</span>
 										</div>
@@ -146,7 +146,7 @@
 												<img
 													alt="profil"
 													src="/images/4.jpg"
-													class="mx-auto object-cover rounded-full h-10 w-10 "
+													class="mx-auto object-cover rounded-full h-10 w-10"
 												/>
 											</span>
 										</div>
@@ -184,7 +184,7 @@
 												<img
 													alt="profil"
 													src="/images/5.jpg"
-													class="mx-auto object-cover rounded-full h-10 w-10 "
+													class="mx-auto object-cover rounded-full h-10 w-10"
 												/>
 											</span>
 										</div>
@@ -237,7 +237,7 @@
 							</button>
 							<button
 								type="button"
-								class="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100 "
+								class="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100"
 							>
 								1
 							</button>
@@ -261,7 +261,7 @@
 							</button>
 							<button
 								type="button"
-								class="w-full p-4 border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100"
+								class="w-full p-4 border-t border-b border-r text-base rounded-r-xl text-gray-600 bg-white hover:bg-gray-100"
 							>
 								<svg
 									width="9"
@@ -284,9 +284,7 @@
 	</div>
 
 	<div class="sm:flex flex-wrap justify-center items-center text-center gap-8">
-		<div
-			class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6  shadow-lg rounded-lg"
-		>
+		<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 shadow-lg rounded-lg">
 			<div class="flex-shrink-0">
 				<div
 					class="flex items-center mx-auto justify-center h-12 w-12 rounded-md bg-gray-600 text-white"
@@ -305,10 +303,8 @@
 					</svg>
 				</div>
 			</div>
-			<h3 class="text-2xl sm:text-xl text-gray-700 font-semibold py-4">
-				Website Design
-			</h3>
-			<p class="text-md  text-gray-500 py-4">
+			<h3 class="text-2xl sm:text-xl text-gray-700 font-semibold py-4">Website Design</h3>
+			<p class="text-md text-gray-500 py-4">
 				Encompassing today’s website design technology to integrated and build solutions relevant to
 				your business.
 			</p>
@@ -340,7 +336,7 @@
 				audience.
 			</p>
 		</div>
-		<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6  px-4 py-4 bg-white shadow-lg rounded-lg ">
+		<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6 px-4 py-4 bg-white shadow-lg rounded-lg">
 			<div class="flex-shrink-0">
 				<div
 					class="flex items-center mx-auto justify-center h-12 w-12 rounded-md bg-gray-600 text-white"
@@ -360,7 +356,7 @@
 				</div>
 			</div>
 			<h3 class="text-2xl sm:text-xl text-gray-700 font-semibold py-4">SEO Marketing</h3>
-			<p class="text-md  text-gray-500 py-4">
+			<p class="text-md text-gray-500 py-4">
 				Let us help you level up your search engine game, explore our solutions for digital
 				marketing for your business.
 			</p>
