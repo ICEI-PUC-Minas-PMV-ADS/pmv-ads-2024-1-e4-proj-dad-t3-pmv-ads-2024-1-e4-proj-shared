@@ -1,28 +1,38 @@
-﻿using api_reservas.Models;
+﻿using api_reservas.Helpers;
+using api_reservas.Models;
+using api_reservas.Models.BaseModels;
+using api_reservas.Models.Config;
 using api_reservas.Models.Dtos;
+using api_reservas.Models.Interfaces;
 using api_reservas.Repositories;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace api_reservas.Services
 {
-    public class AuthService : BaseService<Usuario>
+    public class AuthService : IAuthenticate
     {
         private CondominoService _condominoService;
         private CondominioService _condominioService;
+        private readonly JwtSettings _jwtSettings;
 
-        public AuthService(MyMongoRepository repository, CondominioService condominioService, CondominoService condominoService) : base(repository)
-        {
+        public AuthService(CondominioService condominioService, CondominoService condominoService, IConfiguration configutarion) 
+        { 
             _condominioService = condominioService;
             _condominoService = condominoService;
+            _jwtSettings = configutarion.GetSection("Jwt").Get<JwtSettings>();
         }
         public async Task Login(LoginDto loginDTO)
         {
             // -- retrieve salt
-            var condomino = await FindByEmail(loginDTO.Email);
+            var condomino = await _condominoService.FindByEmail(loginDTO.Email);
             if (condomino == null)
             {
-                Usuario usuario = await FindByEmail(loginDTO.Email);
-                if (loginDTO.Password == usuario.Password)
+                Condominio condominio = await _condominioService.FindByEmail(loginDTO.Email);
+                if (loginDTO.Password == condominio.Password)
                 {
                     // -- return jwt
                 }
@@ -51,7 +61,7 @@ namespace api_reservas.Services
                 // -- check user type
                 if (newUser.isCondominio)
                 {
-                    var condominioCnpjCheck = await FindByCnpj(newUser.Cnpj);
+                    var condominioCnpjCheck = await _condominioService.FindByCnpj(newUser.Cnpj);
                     if (condominioCnpjCheck != null) throw new Exception("Cnpj already in use.");
                     Condominio condominio = new Condominio(newUser);
                     await _condominioService.CreateAsync(condominio);
@@ -59,7 +69,7 @@ namespace api_reservas.Services
                 }
                 else
                 {
-                    var condominoCnpjCheck = await FindByCpf(newUser.Cpf);
+                    var condominoCnpjCheck = await _condominoService.FindByCpf(newUser.Cpf);
                     if (condominoCnpjCheck != null) throw new Exception("Cpf already in use.");
                     Condomino condomino = new Condomino(newUser);
                     await _condominoService.CreateAsync(condomino);
@@ -72,20 +82,49 @@ namespace api_reservas.Services
             }
 
         }
-        public async Task<Usuario> FindByEmail(string email)
+
+        public string GenerateToken(BaseUser user)
         {
-            return await this._collection.Find(x => x.Email == email).FirstOrDefaultAsync();
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email.ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+
+            };
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpireInMinutes),
+                SigningCredentials = credentials,
+                Issuer = _jwtSettings.Issuer,
+                Audience = _jwtSettings.Audience,
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(securityToken);
+
         }
 
-        public async Task<Usuario> FindByCpf(string cpf)
+        public async Task<bool> UserExists(string email)
         {
-            return await _collection.Find(x => x.Cpf == cpf).FirstOrDefaultAsync();
+            var condomino = await _condominioService.FindByEmail(email);
+            var condominio = await _condominioService.FindByEmail(email);
+            if (condomino != null || condominio != null)
+                return true;
+            else
+                return false;
         }
-
-        public async Task<Usuario> FindByCnpj(string cnpj)
-        {
-            return await _collection.Find(x => x.Cnpj == cnpj).FirstOrDefaultAsync();
-        }
-
+ 
     }
 }
+
+
+
+
+
