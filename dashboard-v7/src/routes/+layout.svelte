@@ -1,7 +1,8 @@
-<script>
-	import Layout from '../dashboard/Layout.svelte';
+<script lang="ts">
+	import type { LayoutData } from './$types';
+	import '../app.css';
+
+	export let data: LayoutData;
 </script>
 
-<Layout>
-	<slot />
-</Layout>
+<slot />

@@ -5,8 +5,8 @@
 	const style = {
 		title: `mx-4 text-sm`,
 		section: `font-thin pl-5 text-white mb-6 uppercase lg:pl-6`,
-		active: `border-l-4 border-white lg:border-l-0 lg:border-r-4`,
-		link: `flex items-center text-gray-200 justify-start my-2 p-3 w-full hover:text-white`
+		active: `bg-white/50 rounded-md text-gray-500 font-bold shadow-md border-l-4 border-white lg:border-l-0 lg:border-r-4`,
+		link: `hover:shadow-sm rounded-md hover:bg-white/10 flex items-center text-gray-200 justify-start my-2 p-3 w-full hover:text-white`
 	};
 </script>
 
