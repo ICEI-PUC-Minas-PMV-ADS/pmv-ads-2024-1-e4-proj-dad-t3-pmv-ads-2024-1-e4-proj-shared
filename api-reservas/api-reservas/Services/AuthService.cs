@@ -55,6 +55,8 @@ namespace api_reservas.Services
                 // -- email check
                 var condominoEmailCheck = await _condominoService.FindByEmail(newUser.Email);
                 var condominioEmailCheck = await _condominioService.FindByEmail(newUser.Email);
+
+                var usuarioEmailCheck = await _usuarioService
                 if (condominioEmailCheck != null || condominoEmailCheck != null)
                     throw new Exception("Email already in use.");
 
