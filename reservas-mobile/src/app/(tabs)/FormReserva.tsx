@@ -5,6 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Card } from "react-native-paper";
 import { useRouter } from "expo-router";
+import DatePicker from "react-native-date-picker";
 
 const CreateReservation = () => {
   const [condominio, setCondominio] = useState("");
@@ -57,12 +58,14 @@ const CreateReservation = () => {
           </TouchableOpacity>
 
           {showDatePicker && (
-            <DateTimePicker
-              value={date}
-              mode="date"
-              display="default"
-              onChange={onChange}
-            />
+            <DatePicker date={date} onDateChange={setDate} />
+
+            // <DateTimePicker
+            //   value={date}
+            //   mode="date"
+            //   display="default"
+            //   onChange={onChange}
+            // />
           )}
 
           <Button title="Criar Reserva" onPress={handleCreateReservation} />

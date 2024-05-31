@@ -31,16 +31,25 @@ export default function AppLayout() {
   return (
     // <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
     // <SessionProvider>
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{ title: "Sign In", headerShown: false }}
-        />
-        <Stack.Screen name="register" />
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      //{" "}
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{ title: "Entrar", headerShown: false }}
+      />
+      <Stack.Screen
+        name="register"
+        options={{ title: "Criar nova conta", headerShown: false }}
+      />
+      <Stack.Screen
+        name="(tabs)"
+        options={{ title: "Home", headerShown: false }}
+      />
+      <Stack.Screen
+        name="+not-found"
+        options={{ title: "Not Found", headerShown: false }}
+      />
+    </Stack>
+    //{" "}
     // </SessionProvider>
   );
 }
