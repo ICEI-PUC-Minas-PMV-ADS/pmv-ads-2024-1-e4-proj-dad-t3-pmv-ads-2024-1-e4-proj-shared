@@ -30,7 +30,7 @@ export default function AppLayout() {
 
   return (
     // <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-    <SessionProvider>
+    // <SessionProvider>
       <Stack>
         <Stack.Screen
           name="index"
@@ -41,6 +41,6 @@ export default function AppLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       //{" "}
-    </SessionProvider>
+    // </SessionProvider>
   );
 }

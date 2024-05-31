@@ -122,7 +122,7 @@ export default function LoginScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer}>
-        <Link href="/register" style={styles.text}>
+        <Link href="/home" style={styles.text}>
           Criar nova conta
         </Link>
       </TouchableOpacity>

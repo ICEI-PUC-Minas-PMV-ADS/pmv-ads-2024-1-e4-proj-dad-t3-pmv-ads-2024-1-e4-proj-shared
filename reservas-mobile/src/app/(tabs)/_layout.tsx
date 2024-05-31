@@ -12,7 +12,7 @@ export default function TabLayout() {
   if (!session) {
     // On web, static rendering will stop here as the user is not authenticated
     // in the headless Node process that the pages are rendered in.
-    return <Redirect href="/" />;
+    // return <Redirect href="/" />;
   }
 
   return (
@@ -25,9 +25,11 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="home"
+      
         options={{
           title: "Home",
           href: "/home",
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}
