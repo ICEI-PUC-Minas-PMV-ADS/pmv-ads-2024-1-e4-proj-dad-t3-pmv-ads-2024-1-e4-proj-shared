@@ -1,19 +1,49 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
+## Cenários de Teste Selecionados
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
+### Registro de Usuário
+- **Cenário:** Registro de um usuário regular.
+  - **Requisito Satisfeito:** O usuário regular deve ser capaz de se registrar na aplicação.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar o fluxo de registro na aplicação web), Appium (para testar o fluxo de registro na aplicação móvel).
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
- 
-## Ferramentas de Testes (Opcional)
+### Criação de Reserva
+- **Cenário:** Criação de uma nova reserva por um usuário regular.
+  - **Requisito Satisfeito:** O usuário regular deve ser capaz de criar novas reservas.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar a criação de reservas na aplicação web), Appium (para testar a criação de reservas na aplicação móvel).
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+### Visualização e Edição de Reservas
+- **Cenário:** Visualização e edição de uma reserva existente por um usuário regular.
+  - **Requisito Satisfeito:** O usuário regular deve ser capaz de visualizar e editar reservas existentes.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar a visualização e edição de reservas na aplicação web), Appium (para testar a visualização e edição de reservas na aplicação móvel).
+
+### Deleção de Reserva
+- **Cenário:** Deleção de uma reserva por um usuário regular.
+  - **Requisito Satisfeito:** O usuário regular deve ser capaz de deletar reservas existentes.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar a deleção de reservas na aplicação web), Appium (para testar a deleção de reservas na aplicação móvel).
+
+### Listagem de Usuários Regulares
+- **Cenário:** Listagem de todos os usuários regulares associados a um condomínio.
+  - **Requisito Satisfeito:** O condomínio deve ser capaz de ver uma lista de todos os usuários regulares associados a ele.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar a listagem na aplicação web), Appium (para testar a listagem na aplicação móvel).
+
+### Cancelamento de Associação
+- **Cenário:** Cancelamento da associação de um usuário regular por um condomínio.
+  - **Requisito Satisfeito:** O condomínio deve ser capaz de cancelar a associação de usuários regulares.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar o cancelamento na aplicação web), Appium (para testar o cancelamento na aplicação móvel).
+
+### Listagem e Cancelamento de Reservas
+- **Cenário:** Listagem de todas as reservas atuais e cancelamento de uma reserva por um condomínio.
+  - **Requisito Satisfeito:** O condomínio deve ser capaz de ver uma lista de todas as reservas atuais feitas pelos usuários e cancelar essas reservas com uma justificativa.
+  - **Ferramentas Utilizadas:** Postman (para testar a API REST), Cypress (para testar a listagem e cancelamento na aplicação web), Appium (para testar a listagem e cancelamento na aplicação móvel).
+
+## Grupo de Usuários Escolhido para Participar nos Testes
+Os testes foram realizados com dois grupos principais de usuários:
+1. **Usuários Regulares:** Participaram dos testes de registro, criação, visualização, edição e deleção de reservas.
+2. **Condomínios:** Participaram dos testes de listagem de usuários regulares, cancelamento de associação e gerenciamento de reservas.
+
+## Ferramentas Utilizadas nos Testes
+As seguintes ferramentas foram utilizadas para testar os diferentes componentes da aplicação:
+- **API REST (.NET Web API):** Testada utilizando o Postman para verificar a funcionalidade e resposta dos endpoints.
+- **Aplicação Web (SvelteKit):** Testada utilizando o Cypress para verificar os fluxos de usuário e interações na interface web.
+- **Aplicação Móvel (React Native com Expo Router):** Testada utilizando o Appium para garantir a funcionalidade e usabilidade na plataforma móvel.
