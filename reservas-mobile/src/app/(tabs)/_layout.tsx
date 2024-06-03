@@ -1,11 +1,10 @@
-import { Tabs, Redirect } from "expo-router";
+import { Tabs, useRouter, useSegments } from "expo-router";
 import React from "react";
 import { View, Text } from "react-native";
 import { TabBarIcon } from "@/src/components/navigation/TabBarIcon";
 import { Colors } from "@/src/constants/Colors";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
 import { useSession } from "../../context/ctx";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -16,13 +15,18 @@ export default function TabLayout() {
     // in the headless Node process that the pages are rendered in.
     // return <Redirect href="/" />;
   }
+  const segments = useSegments();
+  console.log("Current segments:", segments);
 
+  // Check if the current route is exactly the main screen
+  const isMainRoute = segments[2] === "Main";
+  console.log("Is Main Route:", isMainRoute);
   return (
     <Tabs
-      initialRouteName="Home"
+      initialRouteName="Main"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
         tabBarInactiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -37,13 +41,10 @@ export default function TabLayout() {
           shadowOpacity: 0.2,
           shadowRadius: 4,
           shadowOffset: { width: 0, height: 2 },
-          borderWidth: 0, // add this line
+          borderWidth: 0,
           borderBottomWidth: 0,
           backgroundColor: "white",
-          // alignItems: "center",
           justifyContent: "center",
-          // backgroundColor: Colors[colorScheme ?? "light"].background,
-          // borderTopColor: Colors[colorScheme ?? "light"].tabIconDefault,
         },
       }}
     >
@@ -53,33 +54,20 @@ export default function TabLayout() {
           headerShown: false,
           title: "Perfil",
           href: "/Perfil",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "person" : "person-outline"}
-              color={color}
-              size={focused ? 28 : 24}
-            />
-          ),
-          tabBarLabel: ({ focused, color }) => (
-            <Text style={{ color, fontSize: focused ? 14 : 12 }}>Perfil</Text>
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="person" color={color} size={24} />
           ),
         }}
       />
+
       <Tabs.Screen
-        name="Home"
+        name="Main"
         options={{
-          title: "Home",
-          href: "/Home",
           headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-              size={focused ? 28 : 24}
-            />
-          ),
-          tabBarLabel: ({ focused, color }) => (
-            <Text style={{ color, fontSize: focused ? 14 : 12 }}>Home</Text>
+          title: "Main",
+          href: "/Main",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="home" color={color} size={24} />
           ),
         }}
       />
@@ -89,15 +77,12 @@ export default function TabLayout() {
           title: "Formulario de Reserva",
           href: "/FormReserva",
           headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ color }) => (
             <TabBarIcon
-              name={focused ? "home" : "home-outline"}
+              name="home"
               color={color}
-              size={focused ? 28 : 24}
+              size={24}
             />
-          ),
-          tabBarLabel: ({ focused, color }) => (
-            <Text style={{ color, fontSize: focused ? 14 : 12 }}>Home</Text>
           ),
         }}
       /> */}

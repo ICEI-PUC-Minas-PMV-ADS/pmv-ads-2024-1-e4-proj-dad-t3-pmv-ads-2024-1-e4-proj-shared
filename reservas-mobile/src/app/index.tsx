@@ -106,7 +106,7 @@ export default function LoginScreen() {
             signIn();
             // Navigate after signing in. You may want to tweak this to ensure sign-in is
             // successful before navigating.
-            router.replace("/Home");
+            router.push("/Main/Main");
           }}
           style={styles.loginText}
         >
@@ -122,7 +122,7 @@ export default function LoginScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer}>
-        <Link href="/Home" style={styles.text}>
+        <Link href="/register" style={styles.text}>
           Criar nova conta
         </Link>
       </TouchableOpacity>

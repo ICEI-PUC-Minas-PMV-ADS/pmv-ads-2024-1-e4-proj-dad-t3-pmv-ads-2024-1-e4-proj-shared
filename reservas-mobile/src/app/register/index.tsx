@@ -29,7 +29,7 @@ export default function RegistrationScreen() {
   };
 
   const handleRegistration = async () => {
-    console.log("entrei")
+    console.log("entrei");
     try {
       const data = {
         nome: name,
@@ -201,7 +201,7 @@ export default function RegistrationScreen() {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.buttonContainer}>
-        <Link href="/login" style={styles.text}>
+        <Link href="/" style={styles.text}>
           Ja possui uma conta? Entre agora.
         </Link>
       </TouchableOpacity>

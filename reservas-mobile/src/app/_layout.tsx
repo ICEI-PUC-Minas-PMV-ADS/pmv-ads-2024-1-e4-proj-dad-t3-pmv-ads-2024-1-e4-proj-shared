@@ -42,7 +42,7 @@ export default function AppLayout() {
       />
       <Stack.Screen
         name="(tabs)"
-        options={{ title: "Home", headerShown: false }}
+        options={{ title: "Main", headerShown: false }}
       />
       <Stack.Screen
         name="+not-found"
