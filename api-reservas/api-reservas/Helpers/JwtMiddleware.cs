@@ -1,6 +1,6 @@
-﻿using api_reservas.Models.BaseModels;
-using api_reservas.Models.Config;
-using api_reservas.Models.Interfaces;
+﻿using api_reservas.Core.Models.BaseModels;
+using api_reservas.Core.Models.Config;
+using api_reservas.Core.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -28,7 +28,7 @@ namespace api_reservas.Helpers
 
             };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var tokenDescriptor = new SecurityTokenDescriptor

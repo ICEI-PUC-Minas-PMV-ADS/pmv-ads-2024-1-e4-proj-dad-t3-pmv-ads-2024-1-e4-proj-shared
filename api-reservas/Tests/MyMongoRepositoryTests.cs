@@ -1,5 +1,5 @@
-﻿using api_reservas.Models.Config;
-using api_reservas.Repositories;
+﻿using api_reservas.Core.Models.Config;
+using Infrastructure.Repository;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Moq;

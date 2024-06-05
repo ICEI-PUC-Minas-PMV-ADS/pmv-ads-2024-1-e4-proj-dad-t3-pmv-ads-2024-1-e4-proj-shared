@@ -1,7 +1,7 @@
+using api_reservas.Core.Models.Config;
 using api_reservas.Helpers;
-using api_reservas.Models.Config;
-using api_reservas.Repositories;
 using api_reservas.Services;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;

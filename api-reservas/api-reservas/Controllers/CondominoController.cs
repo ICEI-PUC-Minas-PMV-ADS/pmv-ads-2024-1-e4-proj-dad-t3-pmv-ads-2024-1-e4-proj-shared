@@ -1,5 +1,5 @@
-﻿using api_reservas.Models;
-using api_reservas.Models.Dtos;
+﻿using api_reservas.Core.Dtos;
+using api_reservas.Core.Models;
 using api_reservas.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -14,10 +14,10 @@ namespace api_reservas.Controllers
         public CondominoController(CondominoService condominoService) => _condominoService = condominoService;
 
         [HttpGet]
-        public async Task<List<GetCondominoDTO>> Get() => await _condominoService.GetAsync();
+        //public async Task<List<GetCondominoDTO>> Get() => await _condominoService.GetAsync();
 
         [HttpGet("{id:length(24)}")]
-        public async Task<ActionResult<GetCondominoDTO>> Get(string id)
+        public async Task<ActionResult<Condominio>> Get(string id)
         {
             var book = await _condominoService.GetAsync(id);
 
@@ -26,7 +26,7 @@ namespace api_reservas.Controllers
                 return NotFound();
             }
 
-            return book;
+            return Ok(book);
         }
 
         [HttpPost]

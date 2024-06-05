@@ -1,4 +1,4 @@
-﻿using api_reservas.Models;
+﻿using api_reservas.Core.Models;
 using api_reservas.Services;
 using Microsoft.AspNetCore.Mvc;
 

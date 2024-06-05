@@ -1,8 +1,12 @@
-﻿using api_reservas.Helpers;
-using api_reservas.Models;
-using api_reservas.Models.Dtos;
+﻿using api_reservas.Core.Dtos;
+using api_reservas.Core.Models.BaseModels;
+using api_reservas.Core.Models.Config;
 using api_reservas.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace api_reservas.Controllers
 {
@@ -12,28 +16,49 @@ namespace api_reservas.Controllers
     {
         //private readonly JwtMiddleware _jwtService;
         private readonly AuthService _authService;
-        public AuthController(AuthService repo) 
+        private readonly JwtSettings _jwtSettings;
+        public AuthController(AuthService repo, IConfiguration configutarion, JwtSettings jwtSettings) 
         {
             _authService = repo;
-            //_jwtService = jwtMiddleare;
+            _jwtSettings = configutarion.GetSection("Jwt").Get<JwtSettings>();
+            _jwtSettings = jwtSettings;
         }
-        //public AuthControler(AuthService authService) => _authService = authService;
+
 
         // -- POST REGISTRO
         [HttpPost("registro")]
-        public async Task<IActionResult> RegisterUser(RegisterDTO entity)
+        public async Task<IActionResult> RegisterUser(CreateUserDTO newUser)
         {
-            CreateUserDTO newUser = new CreateUserDTO(entity);
-            if (await _authService.CreateUserAsync(newUser))
-                return Ok("User created successfully");
-            else return BadRequest("Failed to create user"); 
+            var token = await _authService.CreateUserAsync(newUser, _jwtSettings);
+            if(string.IsNullOrEmpty(token.ToString()))
+            {
+                return BadRequest("Failed to create user");
+            }
+            else return Ok(token);  
         }
 
-        //// -- POST LOGIN
-        //[HttpPost("entrar")]
-        //public async Task<IActionResult> Authenticate(LoginDto user)
+        // -- POST LOGIN
+        [HttpPost("entrar")]
+        public async Task<IActionResult> Authenticate(LoginDto user)
+        {
+            var token = await _authService.Login(user, _jwtSettings);
+            if (string.IsNullOrEmpty(token.ToString()))
+            {
+                return BadRequest("Failed authenticate user");
+            }
+            else return Ok(token);
+        }
+
+
+
+        //public async Task<bool> UserExists(string email)
         //{
-        //    await _authService.Login(user);
+        //    //var condomino = await _condominioService.FindByEmail(email);
+        //    //var condominio = await _condominioService.FindByEmail(email);
+        //    //if (condomino != null || condominio != null)
+        //    //    return true;
+        //    //else
+        //    //    return false;
         //}
 
     }
