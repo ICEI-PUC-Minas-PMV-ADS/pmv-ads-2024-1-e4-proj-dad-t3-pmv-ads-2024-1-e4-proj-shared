@@ -10,10 +10,10 @@ namespace api_reservas.Services
         {
         }
 
-        public async Task<Condomino> FindByEmail(string email)
-        {
-            return await _collection.Find(x => x.Email == email).FirstOrDefaultAsync();
-        }
+        //public async Task<Condomino> FindByEmail(string email)
+        //{
+        //    return await _collection.Find(x => x.Email == email).FirstOrDefaultAsync();
+        //}
 
         public async Task<Condomino> FindByCpf(string cpf)
         {

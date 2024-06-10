@@ -37,7 +37,7 @@ namespace api_reservas.Services
         }
 
 
-        public async Task<bool> CreateUserAsync(CreateUserDTO newUser)
+        public async Task<string> CreateUserAsync(CreateUserDTO newUser, JwtSettings jwtSettings)
         {
             try
             {
@@ -55,22 +55,25 @@ namespace api_reservas.Services
                     if (condominoCnpjCheck != null) throw new Exception("Cpf already in use.");
                 }
 
-                // -- criar novo usuario
+                // -- create new user
                 Usuario createUser = new Usuario(newUser);
-                string? newUserId = _userService.CreateAsync(createUser);   
+                var newUserId = _userService.CreateAsync(createUser);   
 
-                if(string.IsNullOrEmpty(newUserId)) throw new Exception("Database is unavailable. Please contact support.");
-                
+                if(string.IsNullOrEmpty(newUserId.ToString())) throw new Exception("Database is unavailable. Please contact support.");
+                createUser.Id = newUserId.ToString();
+                // -- create new model for user
                 if (newUser.isCondominio)
                 {
-
+                    Condominio newCondominio = new Condominio();
+                    await _condominioService.CreateAsync(newCondominio);
                 } else
                 {
-
+                    Condomino newCondomino = new Condomino();
+                    await _condominoService.CreateAsync(newCondomino);
                 }
-                    await _
                 // -- Uma colecao apenas, Usuario, que tera dentro dele o objeto condomino/condominio
-                return true;
+                var token = GenerateToken(createUser, jwtSettings);
+                return token;
             }
             catch (Exception ex)
             {

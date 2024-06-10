@@ -33,7 +33,7 @@ namespace api_reservas.Core.Models
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
         public string Cnpj { get; set; }
-        public string Cpf { get; set; 
+        public string Cpf { get; set; }
         public bool IsCondominio { get; set; }
     }
 }

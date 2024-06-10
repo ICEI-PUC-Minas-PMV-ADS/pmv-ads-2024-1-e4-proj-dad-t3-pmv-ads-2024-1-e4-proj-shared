@@ -16,9 +16,7 @@ namespace api_reservas.Core.Models
         //    PasswordSalt = entity.PasswordSalt;
         //}
 
-        [Required(ErrorMessage = "O Nome do Condominio é obrigatório")]
-        [MaxLength(50, ErrorMessage = "O tamanho não pode exceder 50 caracteres")]
-
+        public int UserId { get; set; } 
         public string CNPJ { get; set; }
         public Condomino[]? Condominos { get; set; }
         public Local[]? Locais { get; set; }

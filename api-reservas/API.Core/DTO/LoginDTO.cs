@@ -1,4 +1,5 @@
-﻿using BCryptNet = BCrypt.Net.BCrypt;
+﻿using System.Text.Json.Serialization;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace api_reservas.Core.Dtos
 {
@@ -11,11 +12,12 @@ namespace api_reservas.Core.Dtos
             get { return HashPassword(_password); }
             set { _password = value; }
         }
-        protected string Salt { get; set; }
-
+        [JsonIgnore]
+        public string Salt { get; set; }
         private string HashPassword(string password)
         {
             return BCryptNet.HashPassword(password, Salt);
         }
+
     }
 }

@@ -49,7 +49,7 @@ namespace api_reservas.Services
         /// </summary>
         /// <param name="newItem">The entity to insert.</param>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        public async Task<Guid> CreateAsync(T newItem)
+        public async Task<string?> CreateAsync(T newItem)
         {
             await _collection.InsertOneAsync(newItem);
             return (await _collection.Find(x => x.Id == newItem.Id).FirstOrDefaultAsync())?.Id;

@@ -4,26 +4,26 @@ using MongoDB.Driver;
 
 namespace api_reservas.Services
 {
-    public class CondominoService : BaseService<Condomino>
+    public class UserService : BaseService<Usuario>
     {
-        public CondominoService(MyMongoRepository repository) : base(repository)
+        public UserService(MyMongoRepository repository) : base(repository)
         {
         }
 
-        public async Task<Condomino> FindByEmail(string email)
+        public async Task<Usuario> FindByEmail(string email)
         {
             return await _collection.Find(x => x.Email == email).FirstOrDefaultAsync();
         }
 
-        public async Task<Condomino> FindByCpf(string cpf)
+        public async Task<Usuario> FindByCpf(string cpf)
         {
-            return await _collection.Find(x => x.CPF == cpf).FirstOrDefaultAsync();
+            return await _collection.Find(x => x.Cpf == cpf).FirstOrDefaultAsync();
         }
 
-        public async Task<Condomino> CreateCondominoAsync(Condomino condomino)
+        public async Task<Usuario> CreateCondominoAsync(Usuario usuario)
         {
-           await _collection.InsertOneAsync(condomino);
-           var condoCreated = await FindByCpf(condomino.CPF);
+           await _collection.InsertOneAsync(usuario);
+           var condoCreated = await FindByCpf(usuario.Cpf);
            return condoCreated;
         }
 
