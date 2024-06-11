@@ -1,7 +1,6 @@
 ﻿using api_reservas.Core.Dtos;
 using api_reservas.Core.Interfaces;
 using api_reservas.Core.Models;
-using api_reservas.Core.Models.BaseModels;
 using api_reservas.Core.Models.Config;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -57,18 +56,18 @@ namespace api_reservas.Services
 
                 // -- create new user
                 Usuario createUser = new Usuario(newUser);
-                var newUserId = _userService.CreateAsync(createUser);   
+                var newUserId = await _userService.CreateAsync(createUser);   
 
                 if(string.IsNullOrEmpty(newUserId.ToString())) throw new Exception("Database is unavailable. Please contact support.");
                 createUser.Id = newUserId.ToString();
                 // -- create new model for user
                 if (newUser.isCondominio)
                 {
-                    Condominio newCondominio = new Condominio();
+                    Condominio newCondominio = new Condominio(createUser);
                     await _condominioService.CreateAsync(newCondominio);
                 } else
                 {
-                    Condomino newCondomino = new Condomino();
+                    Condomino newCondomino = new Condomino(createUser);
                     await _condominoService.CreateAsync(newCondomino);
                 }
                 // -- Uma colecao apenas, Usuario, que tera dentro dele o objeto condomino/condominio

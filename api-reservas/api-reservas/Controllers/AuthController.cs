@@ -17,11 +17,10 @@ namespace api_reservas.Controllers
         //private readonly JwtMiddleware _jwtService;
         private readonly AuthService _authService;
         private readonly JwtSettings _jwtSettings;
-        public AuthController(AuthService repo, IConfiguration configutarion, JwtSettings jwtSettings) 
+        public AuthController(AuthService repo, IConfiguration configutarion) 
         {
             _authService = repo;
             _jwtSettings = configutarion.GetSection("Jwt").Get<JwtSettings>();
-            _jwtSettings = jwtSettings;
         }
 
 

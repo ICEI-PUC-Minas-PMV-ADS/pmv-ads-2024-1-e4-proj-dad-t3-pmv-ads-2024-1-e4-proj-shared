@@ -19,32 +19,32 @@ namespace api_reservas.Helpers
             _jwtSettings = configutarion.GetSection("Jwt").Get<JwtSettings>();
         }
 
-        public string GenerateToken(BaseUser user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Email.ToString()),
+        //public string GenerateToken(BaseUser user)
+        //{
+        //    var claims = new List<Claim>
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        //        new Claim(ClaimTypes.Name, user.Email.ToString()),
 
-            };
+        //    };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpireInMinutes),
-                SigningCredentials = credentials,
-                Issuer = _jwtSettings.Issuer,
-                Audience = _jwtSettings.Audience,
-            };
+        //    var tokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Subject = new ClaimsIdentity(claims),
+        //        Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpireInMinutes),
+        //        SigningCredentials = credentials,
+        //        Issuer = _jwtSettings.Issuer,
+        //        Audience = _jwtSettings.Audience,
+        //    };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(securityToken);
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+        //    var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+        //    return tokenHandler.WriteToken(securityToken);
 
-        }
+        //}
 
 
 

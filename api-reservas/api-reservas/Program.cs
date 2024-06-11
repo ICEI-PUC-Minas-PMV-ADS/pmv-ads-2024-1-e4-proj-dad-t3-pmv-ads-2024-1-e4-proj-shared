@@ -16,6 +16,7 @@ builder.Services.AddSingleton<CondominioService>();
 builder.Services.AddSingleton<ReservaService>();
 builder.Services.AddSingleton<AuthService>();
 builder.Services.AddSingleton<LocalService>();
+builder.Services.AddSingleton<UserService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
