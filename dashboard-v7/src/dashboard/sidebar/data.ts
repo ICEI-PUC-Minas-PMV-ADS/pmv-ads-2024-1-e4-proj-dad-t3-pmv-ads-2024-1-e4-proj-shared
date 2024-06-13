@@ -13,12 +13,12 @@ export const data = [
 			{
 				title: 'Lista de Reservas',
 				icon: HomeIcon,
-				link: '/reservas'
+				link: '/acesso/reservas'
 			},
 			{
 				title: 'Nova Reserva',
 				icon: MediasIcon,
-				link: '/reservas/nova'
+				link: '/acesso/reservas/reserva'
 			}
 		]
 	},
@@ -26,14 +26,14 @@ export const data = [
 		section: 'CONDOMÍNIOS',
 		content: [
 			{
-				title: 'Meus Condoinios',
+				title: 'Meus Condominios',
 				icon: TerminalIcon,
-				link: '/admin/terminal'
+				link: '/acesso/condominios'
 			},
 			{
 				title: 'Procurar Condominios',
 				icon: RecycleBinIcon,
-				link: '/admin/recycle-bin'
+				link: '/admin/re'
 			}
 		]
 	}
