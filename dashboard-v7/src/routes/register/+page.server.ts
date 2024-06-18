@@ -14,6 +14,7 @@ export const actions: Actions = {
         const confirmarSenha = data.get('confirm_password')?.toString()?? ""
         const cpf = data.get('cpf')?.toString()?? ""
         const cnpj = data.get('cnpj')?.toString()?? ""
+        const isCondominio = cpf !== "" ? false : true;
         const api_url = import.meta.env.VITE_API_BASE_URL
 
         console.log("entrei na action")
@@ -36,7 +37,7 @@ export const actions: Actions = {
             {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nome: nome, email: email, password: senha, cpf: cpf, cnpj: cnpj })
+                body: JSON.stringify({ nome: nome, email: email, password: senha, cpf: cpf, cnpj: cnpj, isCondominio: isCondominio })
             }
         ) 
         if(response.ok){ 

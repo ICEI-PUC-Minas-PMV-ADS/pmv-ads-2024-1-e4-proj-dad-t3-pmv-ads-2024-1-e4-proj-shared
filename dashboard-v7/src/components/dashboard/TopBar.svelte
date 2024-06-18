@@ -1,5 +1,5 @@
-<script>
-	import { openSidebar } from './store.ts';
+<script lang="ts">
+	import { openSidebar } from './store';
 </script>
 
 <header class="bg-neutral-700 h-20 items-center relative z-10 shadow-lg">
@@ -54,9 +54,29 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex items-center justify-end ml-5 p-1 relative w-1/4 sm:mr-0 sm:right-auto">
+			<div
+				class="group flex items-center justify-end ml-5 p-1 relative w-1/4 sm:mr-0 sm:right-auto"
+			>
 				<span class="block relative">
 					<img alt="CR7" src="/images/1.png" class="h-10 mx-auto object-cover rounded-full w-10" />
+					<div
+						class="absolute right-0 w-40 mt-1 bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300"
+						style="top: 100%;"
+					>
+						<div class="py-1">
+							<a
+								href="/acesso/admin/settings"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a
+							>
+							<form method="POST" action="/logout">
+								<button
+									class="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100"
+								>
+									Logout
+								</button>
+							</form>
+						</div>
+					</div>
 				</span>
 			</div>
 		</div>

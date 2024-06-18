@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { sidebarOpen } from '../store';
 	import SidebarItems from './SidebarItems.svelte';
 	import SidebarHeader from './SidebarHeader.svelte';

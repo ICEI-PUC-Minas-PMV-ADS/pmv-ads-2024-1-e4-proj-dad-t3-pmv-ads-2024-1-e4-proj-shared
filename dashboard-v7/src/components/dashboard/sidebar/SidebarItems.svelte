@@ -16,7 +16,7 @@
 
 <ul class="md:pl-6">
 	<li>
-		{#if userData.isCondominio}
+		{#if userData != null && userData.isCondominio}
 			{#each itemsCondominio as { section, content } (section)}
 				<div class="mb-12">
 					<div class={style.section}>{section}</div>
