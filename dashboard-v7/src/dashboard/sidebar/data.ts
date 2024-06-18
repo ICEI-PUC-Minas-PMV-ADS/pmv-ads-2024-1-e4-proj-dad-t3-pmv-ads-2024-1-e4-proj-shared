@@ -28,12 +28,50 @@ export const data = [
 			{
 				title: 'Meus Condominios',
 				icon: TerminalIcon,
-				link: '/acesso/condominios'
+				link: '/acesso/meuscondominios'
 			},
 			{
 				title: 'Procurar Condominios',
 				icon: RecycleBinIcon,
-				link: '/admin/re'
+				link: '/acesso/condominios'
+			}
+		]
+	}
+];
+
+export const itemsCondominio = [
+	{
+		section: 'RESERVAS',
+		content: [
+			{
+				title: 'Lista de Reservas',
+				icon: HomeIcon,
+				link: '/acesso/reservas'
+			}
+		]
+	},
+	{
+		section: 'CONDOMÍNOS',
+		content: [
+			{
+				title: 'Lista de Condôminos',
+				icon: TerminalIcon,
+				link: '/acesso/condominos'
+			}
+		]
+	},
+	{
+		section: 'LOCAIS',
+		content: [
+			{
+				title: 'Locais',
+				icon: TerminalIcon,
+				link: '/acesso/locais'
+			},
+			{
+				title: 'Adicionar Local',
+				icon: RecycleBinIcon,
+				link: '/acesso/locais/adicionar'
 			}
 		]
 	}

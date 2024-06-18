@@ -1,7 +1,10 @@
-<script>
+<script lang="ts">
 	import Layout from '../../dashboard/Layout.svelte';
+	/** @type {import('./$types').LayoutData} */
+	export let data;
+	// console.log(data);
 </script>
 
-<Layout>
+<Layout bind:userData={data.userData}>
 	<slot />
 </Layout>

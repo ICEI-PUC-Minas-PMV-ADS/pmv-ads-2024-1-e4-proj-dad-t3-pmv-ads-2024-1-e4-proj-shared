@@ -3,6 +3,10 @@
 	import SidebarItems from './SidebarItems.svelte';
 	import SidebarHeader from './SidebarHeader.svelte';
 
+	/**
+	 * @type {any}
+	 */
+	export let userData;
 	const style = {
 		mobileOrientation: {
 			start: 'left-0 ',
@@ -15,6 +19,8 @@
 	};
 
 	export let mobileOrientation = 'end';
+
+	console.log(userData);
 </script>
 
 <aside
@@ -23,7 +29,7 @@
 >
 	<div class={style.container}>
 		<SidebarHeader />
-		<SidebarItems />
+		<SidebarItems bind:userData />
 	</div>
 </aside>
 

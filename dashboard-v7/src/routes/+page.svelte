@@ -1,5 +1,10 @@
 <script>
-	import Content from '../components/Content.svelte';
+	import { goto } from '$app/navigation';
+	import { redirect } from '@sveltejs/kit';
+	import { onMount } from 'svelte';
+	onMount(() => {
+		goto('/login');
+	});
 </script>
 
 <svelte:head>

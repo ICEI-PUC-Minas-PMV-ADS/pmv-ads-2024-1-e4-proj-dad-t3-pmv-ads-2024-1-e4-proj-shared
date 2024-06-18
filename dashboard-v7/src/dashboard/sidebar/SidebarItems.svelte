@@ -1,7 +1,11 @@
 <script>
-	import { data } from './data';
+	import { data, itemsCondominio } from './data';
 	import { page } from '$app/stores';
 
+	// import type { PageData } from '../../$types';
+
+	export let userData;
+	console.log(userData);
 	const style = {
 		title: `mx-4 text-sm`,
 		section: `font-thin pl-5 text-white mb-6 uppercase lg:pl-6`,
@@ -12,20 +16,38 @@
 
 <ul class="md:pl-6">
 	<li>
-		{#each data as { section, content } (section)}
-			<div class="mb-12">
-				<div class={style.section}>{section}</div>
+		{#if userData.isCondominio}
+			{#each itemsCondominio as { section, content } (section)}
+				<div class="mb-12">
+					<div class={style.section}>{section}</div>
 
-				{#each content as item (item.title)}
-					<a
-						href={item.link}
-						class={`${style.link} ${item.link === $page.url.pathname ? style.active : ''}`}
-					>
-						<span><svelte:component this={item.icon} /></span>
-						<span class={style.title}>{item.title}</span>
-					</a>
-				{/each}
-			</div>
-		{/each}
+					{#each content as item (item.title)}
+						<a
+							href={item.link}
+							class={`${style.link} ${item.link === $page.url.pathname ? style.active : ''}`}
+						>
+							<span><svelte:component this={item.icon} /></span>
+							<span class={style.title}>{item.title}</span>
+						</a>
+					{/each}
+				</div>
+			{/each}
+		{:else}
+			{#each data as { section, content } (section)}
+				<div class="mb-12">
+					<div class={style.section}>{section}</div>
+
+					{#each content as item (item.title)}
+						<a
+							href={item.link}
+							class={`${style.link} ${item.link === $page.url.pathname ? style.active : ''}`}
+						>
+							<span><svelte:component this={item.icon} /></span>
+							<span class={style.title}>{item.title}</span>
+						</a>
+					{/each}
+				</div>
+			{/each}
+		{/if}
 	</li>
 </ul>

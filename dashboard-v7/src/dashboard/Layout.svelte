@@ -5,8 +5,12 @@
 	import TopBar from './TopBar.svelte';
 	import Overlay from './Overlay.svelte';
 	import Sidebar from './sidebar/Sidebar.svelte';
-	import { closeSidebar, sidebarOpen } from './store.ts';
+	import { closeSidebar, sidebarOpen } from './store';
 
+	/**
+	 * @type {any}
+	 */
+	export let userData;
 	/*	lg:w-[calc(100%-16rem)] class get the remained width of the main tag from lg:viewport by subtracting
 	(the total width by the width of the Sidebar component which is w-64 = 16rem)*/
 
@@ -29,7 +33,7 @@
 <div class={style.container}>
 	<div class="flex items-start">
 		<Overlay />
-		<Sidebar mobileOrientation="end" />
+		<Sidebar bind:userData mobileOrientation="end" />
 		<div class={style.mainContainer}>
 			<TopBar />
 			<main class={style.main}>
