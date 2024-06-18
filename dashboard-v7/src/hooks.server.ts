@@ -45,7 +45,7 @@
         return response
 
       } else {
-        if(sessionCookie) throw redirect(302, '/acesso/dashboard')
+        if(sessionCookie) throw redirect(302, '/acesso/reservas')
         const response = await resolve(event)
         return response
       }

@@ -11,6 +11,7 @@ export const load = (async ({ cookies }) => {
         headers.append('Authorization', token);
         // console.log(headers)
     }
+    console.log(headers)
     console.log(url)
     const res: Response = await fetch(url ,{
         method: "GET",

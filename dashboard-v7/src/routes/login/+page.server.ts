@@ -51,7 +51,13 @@ export const actions: Actions = {
             throw redirect(302, '/acesso/reservas');
         } else {
             console.log("falhou")
-            return fail(422, { errors: await response.json() }), {fail: true};
+            try {
+                const errorResponse = await response.json();
+                return fail(422, { errors: errorResponse });
+              } catch (error) {
+                // If the error response is not a valid JSON, fall back to a generic error message
+                return fail(422, { errors: { message: 'Invalid credentials.' } });
+              }
     }
     }
 }
