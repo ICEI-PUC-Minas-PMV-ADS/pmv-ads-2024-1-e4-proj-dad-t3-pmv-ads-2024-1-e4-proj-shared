@@ -22,7 +22,7 @@ namespace api_reservas.Services
             _condominoService = condominoService;
             _userService = userService;
         }
-        public async Task<string> Login(LoginDto loginDTO, JwtSettings _jwtSettings)
+        public async Task<LoginResponseDto> Login(LoginDto loginDTO, JwtSettings _jwtSettings)
         {
             // -- retrieve user and authenticat
             var user = await _userService.FindByEmail(loginDTO.Email);
@@ -32,11 +32,19 @@ namespace api_reservas.Services
 
             // -- generate 
             var token = GenerateToken(user, _jwtSettings);
-            return token;
+
+            var response = new LoginResponseDto
+            {
+                Token = token,
+                IsCondominio = user.IsCondominio,
+                Id = user.Id
+            };
+
+            return response;
         }
 
 
-        public async Task<string> CreateUserAsync(CreateUserDTO newUser, JwtSettings jwtSettings)
+        public async Task<LoginResponseDto> CreateUserAsync(CreateUserDTO newUser, JwtSettings jwtSettings)
         {
             try
             {
@@ -72,7 +80,14 @@ namespace api_reservas.Services
                 }
                 // -- Uma colecao apenas, Usuario, que tera dentro dele o objeto condomino/condominio
                 var token = GenerateToken(createUser, jwtSettings);
-                return token;
+                var response = new LoginResponseDto
+                {
+                    Token = token,
+                    IsCondominio = createUser.IsCondominio,
+                    Id = createUser.Id
+                };
+                
+                return response;
             }
             catch (Exception ex)
             {
@@ -106,6 +121,35 @@ namespace api_reservas.Services
             var securityToken = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(securityToken);
 
+        }
+
+        public async Task<GetMeResponseDto> ValidateTokenAndRetrieveUser(string token, JwtSettings _jwtSettings)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var validationParams = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key)),
+                    ValidIssuer = _jwtSettings.Issuer,
+                    ValidAudience = _jwtSettings.Audience,
+                };
+
+                var principal = tokenHandler.ValidateToken(token, validationParams, out SecurityToken validatedToken);
+                var userId = principal.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var isCondominio = bool.Parse(principal.FindFirst(ClaimTypes.Actor).Value);
+
+                return new GetMeResponseDto { Id = userId, IsCondominio = isCondominio };
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 

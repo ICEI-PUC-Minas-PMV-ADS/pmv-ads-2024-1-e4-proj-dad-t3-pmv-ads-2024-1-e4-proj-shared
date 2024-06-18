@@ -1,5 +1,6 @@
 ﻿using api_reservas.Core.Models;
 using api_reservas.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -7,6 +8,7 @@ namespace api_reservas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class CondominioController : ControllerBase
     {
         private readonly CondominioService _condominioService;

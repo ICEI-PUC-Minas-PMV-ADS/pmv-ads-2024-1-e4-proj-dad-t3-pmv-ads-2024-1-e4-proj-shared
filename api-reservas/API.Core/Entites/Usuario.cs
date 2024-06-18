@@ -18,6 +18,7 @@ namespace api_reservas.Core.Models
             Email = novoUsuario.Email;
             Password = novoUsuario.Password;
             PasswordSalt = novoUsuario.PasswordSalt;
+            IsCondominio = novoUsuario.isCondominio;
             if (novoUsuario.isCondominio)
             {
                 Cnpj = novoUsuario.Cnpj;
