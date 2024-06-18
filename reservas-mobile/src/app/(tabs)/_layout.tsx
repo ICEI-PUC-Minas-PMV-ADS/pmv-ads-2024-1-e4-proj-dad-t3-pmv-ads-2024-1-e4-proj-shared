@@ -1,6 +1,5 @@
-import { Tabs, useRouter, useSegments } from "expo-router";
+import { Tabs, router, useSegments } from "expo-router";
 import React from "react";
-import { View, Text } from "react-native";
 import { TabBarIcon } from "@/src/components/navigation/TabBarIcon";
 import { Colors } from "@/src/constants/Colors";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
@@ -10,10 +9,13 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { session, isLoading } = useSession();
 
+  if (isLoading) {
+    return null;
+  }
+
   if (!session) {
-    // On web, static rendering will stop here as the user is not authenticated
-    // in the headless Node process that the pages are rendered in.
-    // return <Redirect href="/" />;
+    console.log("entrei aqui 2");
+    router.push("/");
   }
   const segments = useSegments();
   console.log("Current segments:", segments);

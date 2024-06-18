@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -10,12 +11,30 @@ import {
   Image,
   Alert,
 } from "react-native";
+import { useSession } from "../../context/ctx";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
+  const { signIn } = useSession();
   // showAlert = (viewId) => Alert.alert("Alert", "Button pressed " + viewId);
+
+  const handleLogin = async () => {
+    try {
+      const success = await signIn(email, password);
+
+      if (success) {
+        Alert.alert("Login successful");
+        router.push("/Main");
+      } else {
+        Alert.alert("Login failed");
+        setLoginStatus("Login Failed.");
+      }
+    } catch (error) {
+      Alert.alert("Login failed: " + error);
+    }
+  };
 
   return (
     <ImageBackground
@@ -55,7 +74,8 @@ export default function LoginScreen() {
           placeholder="Email"
           keyboardType="email-address"
           underlineColorAndroid="transparent"
-          // onChangeText={(email) => setEmail({ email })}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
       </View>
 
@@ -71,13 +91,14 @@ export default function LoginScreen() {
           placeholder="Password"
           secureTextEntry={true}
           underlineColorAndroid="transparent"
-          // onChangeText={(password) => setPassword({ password })}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
         />
       </View>
 
       <TouchableOpacity
         style={[styles.buttonContainer, styles.loginButton]}
-        // onPress={() => showAlert("login")}
+        onPress={handleLogin}
       >
         <Text style={styles.loginText}>Entrar</Text>
       </TouchableOpacity>
@@ -94,6 +115,8 @@ export default function LoginScreen() {
           Criar nova conta
         </Link>
       </TouchableOpacity>
+
+      <Text style={styles.text}>{loginStatus}</Text>
     </ImageBackground>
   );
 }

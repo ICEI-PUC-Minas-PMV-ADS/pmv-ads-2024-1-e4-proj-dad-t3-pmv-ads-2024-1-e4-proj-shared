@@ -10,6 +10,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { useSession } from "../../context/ctx";
 
 export default function RegistrationScreen() {
   const [selectedTab, setSelectedTab] = useState("one");
@@ -19,7 +20,8 @@ export default function RegistrationScreen() {
   const [password, setPassword] = useState("");
   const [cpf, setCPF] = useState("");
   const [cnpj, setCNPJ] = useState("");
-
+  const [registerStatus, setRegisterStatus] = useState("");
+  const { register } = useSession();
   const handleCPFChange = (text: React.SetStateAction<string>) => {
     setCPF(text);
   };
@@ -36,24 +38,17 @@ export default function RegistrationScreen() {
         email: email,
         cnpj: cnpj,
         cpf: cpf,
-        isCondominio: selectedTab === "one",
+        isCondominio: selectedTab == "two",
         password: password,
       };
-
-      const response = await fetch(
-        "https://localhost:44346/api/auth/registro",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      );
-      const token = await response.json();
-      if (token) {
-        // await registerUser(token);
-        // Navigate after registering. You may want to tweak this to ensure registration is
-        // successful before navigating.
-        router.replace("/form-reserva");
+      console.log(selectedTab);
+      console.log(data);
+      const response = await register(data);
+      console.log("the response is " + response);
+      if (response) {
+        router.push("/home");
+      } else {
+        setRegisterStatus("Registration failed.");
       }
     } catch (error) {
       // Handle the error
@@ -205,6 +200,7 @@ export default function RegistrationScreen() {
           Ja possui uma conta? Entre agora.
         </Link>
       </TouchableOpacity>
+      <Text>{registerStatus}</Text>
     </ImageBackground>
   );
 }
