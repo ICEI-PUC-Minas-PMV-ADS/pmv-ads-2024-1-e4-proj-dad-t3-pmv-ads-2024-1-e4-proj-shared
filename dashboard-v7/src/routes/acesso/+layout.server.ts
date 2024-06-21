@@ -1,5 +1,7 @@
 import type { LayoutServerLoad } from './$types';
 
+let userData 
+
 export const load = (async ({ cookies }) => {
     console.log("entrei na action do layout")
     const api_url = import.meta.env.VITE_API_BASE_URL

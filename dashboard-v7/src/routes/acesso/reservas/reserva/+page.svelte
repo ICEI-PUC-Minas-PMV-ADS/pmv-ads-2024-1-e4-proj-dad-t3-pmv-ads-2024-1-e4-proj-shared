@@ -19,10 +19,10 @@
 				name="condominio"
 			>
 				<option value="">Selecione um Condomínio</option>
-				<option value="haircut">Haircut</option>
-				<option value="coloring">Coloring</option>
+				<option value="haircut">Condominio Sol Nascente</option>
+				<!-- <option value="coloring">Coloring</option>
 				<option value="styling">Styling</option>
-				<option value="facial">Facial</option>
+				<option value="facial">Facial</option> -->
 			</select>
 		</div>
 		<div class="mb-4">
@@ -33,10 +33,10 @@
 				name="local"
 			>
 				<option value="">Selecione um Espaço</option>
-				<option value="haircut">Haircut</option>
-				<option value="coloring">Coloring</option>
-				<option value="styling">Styling</option>
-				<option value="facial">Facial</option>
+				<option value="haircut">Churrasqueira</option>
+				<option value="coloring">Salão de Festas</option>
+				<option value="styling">Espaço Gorumet</option>
+				<option value="facial">Piscina</option>
 			</select>
 		</div>
 		<!-- <div class="mb-4">
