@@ -1,4 +1,4 @@
-# SPACE-SHARE Sistema de gerenciamento de reservas
+# SHARED Sistema de gerenciamento de reservas
 
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
