@@ -5,8 +5,6 @@
 
 	// import { getContext } from 'svelte';
 
-	
-
 	// const condos = getContext('condos');
 	// console.log(condos)
 </script>
@@ -54,16 +52,16 @@
 	</thead>
 	<tbody class="bg-white divide-y divide-gray-200">
 		{#each data.condominios as condominio}
-		<tr>
-		  <td>{condominio.name}</td>
-		  <td>{condominio.cidade}</td>
-		  <td>{condominio.bairro}</td>
-		  <td>{condominio.cep}</td>
-		  <!-- <td>{condominio.email}</td> -->
-		  <td>
-			<a href="#" class="text-indigo-600 hover:text-indigo-900">SOLICITAR</a>
-		  </td>
-		</tr>
-	  {/each}
+			<tr>
+				<td>{condominio.name}</td>
+				<td>{condominio.cidade}</td>
+				<td>{condominio.bairro}</td>
+				<td>{condominio.cep}</td>
+				<!-- <td>{condominio.email}</td> -->
+				<td>
+					<a href="/acesso/reservas" class="text-indigo-600 hover:text-indigo-900">SOLICITAR</a>
+				</td>
+			</tr>
+		{/each}
 	</tbody>
 </table>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,50 +11,34 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useSession } from "../../../context/ctx";
 
-// const items = [
-//   {
-//     id: 1,
-//     name: "Condominio Alto do Parque",
-//     price: "Salão de Festas",
-//     date: "Jun 1, 2024",
-//   },
-//   {
-//     id: 2,
-//     name: "Condominio Alto da Parque",
-//     price: "Piscina",
-//     date: "Jun 3, 2024",
-//   },
-//   {
-//     id: 3,
-//     name: "Condominio Alto da Praia",
-//     price: "Espaço Gourmet",
-//     date: "Jun 4, 2024",
-//   },
-// ];
+const mockReservas = [
+  {
+    id: 1,
+    name: "Condominio Sol Nascente",
+    area: "Churrasqueira",
+    date: "Jun 29, 2024",
+  },
+  // {
+  //   id: 2,
+  //   name: "Condominio Alto da Parque",
+  //   area: "Piscina",
+  //   date: "Jun 3, 2024",
+  // },
+  // {
+  //   id: 3,
+  //   name: "Condominio Alto da Praia",
+  //   area: "Espaço Gourmet",
+  //   date: "Jun 4, 2024",
+  // },
+];
 
 const GroceryDeliveryApp = () => {
   const { session } = useSession();
-  const [reservas, setReservas] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [reservas, setReservas] = useState(mockReservas);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchReservas = async () => {
-      try {
-        const response = await fetch('https://localhost:44346/api/reserva', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session}`,
-          },
-        });
-        const data = await response.json();
-        setReservas(data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchReservas();
+    // The useEffect is not fetching data anymore, but you can leave it here if you plan to use it for real data later.
   }, [session]);
 
   if (loading) {
@@ -68,7 +52,7 @@ const GroceryDeliveryApp = () => {
   return (
     <ImageBackground
       source={{
-        uri: 'https://images.unsplash.com/photo-1605283176568-9b41fde3672e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        uri: "https://images.unsplash.com/photo-1605283176568-9b41fde3672e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       }}
       style={styles.container}
     >
@@ -80,12 +64,12 @@ const GroceryDeliveryApp = () => {
             <View style={styles.card}>
               <View style={styles.item}>
                 <View style={styles.itemContent}>
-                  <Text style={styles.itemName}>Condomínio: {item.condominioId}</Text>
-                  <Text style={styles.itemPrice}>Data: {item.dataHorario}</Text>
-                  <Text style={styles.itemPrice}>Condomino: {item.condominoId}</Text>
+                  <Text style={styles.itemName}>Condomínio: {item.name}</Text>
+                  <Text style={styles.itemPrice}>Data: {item.date}</Text>
+                  <Text style={styles.itemPrice}>Área: {item.area}</Text>
                 </View>
                 <View
-                  style={{ flexDirection: 'row', justifyContent: 'flex-end' }}
+                  style={{ flexDirection: "row", justifyContent: "flex-end" }}
                 >
                   <TouchableOpacity>
                     <Ionicons name="create-outline" size={32} color="black" />
@@ -97,7 +81,7 @@ const GroceryDeliveryApp = () => {
               </View>
             </View>
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
         />
       </View>
     </ImageBackground>

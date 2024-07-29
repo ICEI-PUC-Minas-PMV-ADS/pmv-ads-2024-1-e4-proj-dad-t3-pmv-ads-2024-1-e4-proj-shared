@@ -1,4 +1,4 @@
-# SPACE-SHARE Sistema de gerenciamento de reservas
+# SHARED Sistema de gerenciamento de reservas
 
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
@@ -11,9 +11,6 @@ O projeto consiste no desenvolvimento de uma plataforma digital para facilitar a
 ## Integrantes
 
 <ol>
-<li><a href="https://github.com/rafaeldrubio"> Rafael Dias Rubio</a></li>
-<li><a href="https://github.com/JeffJeff25"> Jefferson Lacerda</a></li>
-<li><a href="https://github.com/Giovannadnts"> Giovanna Dantas</a></li>
 <li><a href="https://github.com/feuvpi">Fred Vasquez Pinheiro Gomes</a></li>
   
 </ol>
@@ -24,7 +21,52 @@ O projeto consiste no desenvolvimento de uma plataforma digital para facilitar a
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+**Requisitos**
+
+* Docker instalado na máquina local
+* Node.js instalado na máquina local (para executar o frontend web e mobile)
+* Expo CLI instalado na máquina local (para executar o frontend mobile)
+**Instalando as dependências**
+-----------------------------
+
+### API (.NET Web API com MongoDB)
+
+1. Abra um terminal na raiz do projeto e execute o comando `dotnet restore` para instalar as dependências do .NET.
+2. Execute o comando `docker-compose up -d` para iniciar o container do MongoDB em segundo plano.
+
+### Frontend Web (SvelteKit)
+
+1. Abra um terminal na raiz do projeto e execute o comando `npm install` para instalar as dependências do frontend web.
+
+### Frontend Mobile (React Native com Expo)
+
+1. Abra um terminal na raiz do projeto e execute o comando `npm install` para instalar as dependências do frontend mobile.
+2. Execute o comando `expo start` para iniciar o servidor do Expo.
+
+**Executar a aplicação**
+-------------------------
+
+### API (.NET Web API com MongoDB)
+
+1. Execute o comando `dotnet run` para iniciar a API.
+2. A API estará disponível em `https://localhost:44346`.
+
+### Frontend Web (SvelteKit)
+
+1. Execute o comando `npm run dev` para iniciar o frontend web em modo de desenvolvimento.
+2. O frontend web estará disponível em `http://localhost:5173`.
+
+### Frontend Mobile (React Native com Expo)
+
+1. Abra um navegador e acesse `http://localhost:8081` para abrir o frontend mobile.
+2. O frontend mobile utilizará o Expo Router para gerenciar as rotas.
+
+**Observações**
+---------------
+
+* Certifique-se de que o Docker esteja instalado e configurado corretamente na máquina local.
+* Certifique-se de que o Node.js e o Expo CLI estejam instalados e configured corretamente na máquina local.
+* Se você tiver problemas para executar a aplicação, verifique os logs de cada componente para identificar o erro.
 
 # Documentação
 
